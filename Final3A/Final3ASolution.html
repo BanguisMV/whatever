@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final 3A | Apply to Taft Middle School</title>
+
+    <style>
+        /* ------------------- Scrollbar Solutions------------------- */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #d2af7d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #665028;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #503e1d;
+        }
+
+        body {
+            background: #57482e;
+            overflow-x: hidden;
+        }
+
+        main {
+            height: 100%;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .content {
+            background: white;
+            width: 60%;
+            height: 100%;
+            padding-bottom: 2rem;
+            text-align: center;
+        }
+
+        .banner {
+            width: 100%;
+        }
+
+        footer {
+            align-self: flex-start;
+            text-align: start;
+        }
+
+        #dynamicMessage {
+            font-size: 15px;
+            border-top: 4px solid green;
+            padding: 10px;
+            border-bottom: 4px solid green;
+            text-align: start;
+        }
+
+        h2 {
+            font-size: 10px;
+            margin-left: 10rem;
+            color: white;
+            text-align: start;
+        }
+
+        h3 {
+            margin-left: 1rem;
+            text-align: start;
+        }
+
+        p {
+            text-indent: 2rem;
+            margin: 5px;
+            text-align: start;
+        }
+
+        .runningKids {
+            width: 400px;
+            text-align: center;
+        }
+
+        .attendance {
+            color: maroon;
+            margin-left: 1rem;
+            text-align: start;
+        }
+    </style>
+
+</head>
+
+<body>
+    <main class="container">
+
+        <!-- Content to be filled using JavaScript  -->
+
+        <section class="content">
+
+            <img src="banner.jpg" alt="" class="banner" />
+
+            <!-- Dynamic Message -->
+            <h1 id="dynamicMessage"></h1>
+
+            <h3>Taft Foundation Silent Auction</h3>
+            <p id="auction"></p>
+
+            <h3>Spring Math-athon</h3>
+            <p> This year, Taft Middle School hosts annual math contest of are middle school schoolars, Volunteers are
+                needed to help guide parents and students, serve refreshments, and coordinates activites.</p>
+            <img src="running.jpg" class="runningKids">
+            <h1 class=" attendance ">Attendance</h1>
+            <p>Call in your child's attendance at 55555-5555-555 </p>
+
+        </section>
+
+        <!-- Dynamic Years and Date for Copyright  -->
+        <footer class="copyright">
+            <h2>Taft Middle School, &copy; <span>2009</span> - <span id="currentDate"></span></h2>
+            <h2>This document was last modified <span id="lastMod"></span></h2>
+        </footer>
+    </main>
+
+
+</body>
+
+
+<script>
+
+    // ------------------ Variables ------------------- //
+    const currentDate = document.getElementById('currentDate')
+    const lastMod = document.getElementById('lastMod')
+    const dynamicMessage = document.getElementById('dynamicMessage')
+    const auction = document.getElementById('auction')
+
+    // ------------------ Arrays ------------------- //
+    const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    const Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+
+    // ------------------ Dates------------------- //
+    const nowDay = Days[new Date().getDay() - 1]
+    const nowMonth = Months[new Date().getMonth()]
+    const auctionMonth = Months[new Date().getMonth() + 3]
+    const openHouse = new Date("April 26, 2021")
+
+
+
+    // ------------------ Text Contents to be filled when page loads ------------------- //
+    currentDate.textContent = ` ${new Date().getFullYear()}`
+
+    lastMod.textContent = ` ${new Date().getMonth() + 1} / ${new Date().getDate() - 1} / ${new Date().getFullYear()}`
+
+    dynamicMessage.textContent = `
+        Today is ${nowDay}, ${nowMonth}, ${new Date().getDate()}, ${new Date().getFullYear()}, 
+        that leaves only 42 days until Taft Middle School Open House. 
+        Meet our faculty and talk with your child's teachers. 
+        Ms. Carrie Stack's fourth grade will represent a musical program at 7:30 pm
+    `;
+
+    auction.textContent = `
+        Save your pennies for the Taft Foundation Silent Auction on ${openHouse.toUTCString().split(' ').slice(0, 4).join(' ')}.
+        We have over $20,000 of donated items from local businesses. There is still time to this year's auction.
+    `;
+
+</script>
+
+</html>

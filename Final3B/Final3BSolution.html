@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick's Fitness Center</title>
+</head>
+<style>
+    /* ------------------- Scrollbar Solutions------------------- */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #dfcfae;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #715a2d;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #000000;
+    }
+
+    body {
+        background: #715a2d;
+        overflow-x: hidden;
+    }
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0 15rem;
+
+    }
+
+    .content {
+        background: #f9ecc0;
+        width: 100%;
+        height: 100%;
+        padding-bottom: 2rem;
+        text-align: center;
+    }
+
+    .banner {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 1rem;
+        margin: 1rem;
+        text-align: start;
+    }
+
+    footer {
+        align-self: flex-start;
+    }
+
+    footer h2 {
+        font-size: 12px;
+        color: white;
+    }
+
+    p {
+        margin: 1rem;
+        text-align: start;
+    }
+
+    .menu {
+        width: 60%;
+    }
+</style>
+
+<body>
+    <main class="container">
+
+        <section class="content">
+            <img src="nick.jpg" alt="" class="banner">
+            <h1>
+                You only have <span id="countdown"></span> days left to join Nick's and have the iniation fee waived,
+                and first month free. <br />
+                This offer will not be repeated again this year, so join now.
+            </h1>
+
+            <p class="paragraph">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ipsam quia quas,
+                accusantium incidunt tempore necessitatibus cum aut vero earum libero
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ipsam quia quas,
+                accusantium incidunt tempore necessitatibus cum aut vero earum libero
+                cupiditate quis impedit optio ut non natus iure
+                architecto esse repellendus, culpa labore beatae deserunt laudantium? Ab, perferendis eius!
+                cupiditate quis impedit optio ut non natus iure
+                architecto esse repellendus, culpa labore beatae deserunt laudantium? Ab, perferendis eius!
+            </p>
+
+            <img src="2.jpg" alt="" class="menu">
+
+            <p class="paragraph">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ipsam quia quas,
+                accusantium incidunt tempore necessitatibus cum aut vero earum libero
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur ipsam quia quas,
+                antium? Ab, perferendis eius!
+            </p>
+        </section>
+
+
+        <!-- Dynamic Years and Date for Copyright  -->
+        <footer class="copyright">
+            <h2>Nick's Fitness Center, &copy; <span>2009</span> - <span id="currentDate"></span></h2>
+            <h2>This document was last modified <span id="lastMod"></span></h2>
+        </footer>
+
+    </main>
+</body>
+
+<script>
+    const currentDate = document.getElementById('currentDate')
+    const lastMod = document.getElementById('lastMod')
+    const countdown = document.getElementById('countdown')
+
+    // ------------------ Arrays ------------------- //
+    const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    const Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+
+
+    // GET DATES
+    const today = new Date();
+
+    // SET DATE, 0  == January, 1 == February
+    // so in this it's February 14
+    let deadline = new Date(today.getFullYear(), 1, 14);
+
+    // Countdown condition
+    if (today.getMonth() == 1 && today.getDate() > 14) {
+        deadline.setFullYear(deadline.getFullYear() + 1);
+    }
+    const one_day = 1000 * 60 * 60 * 24;
+    const daysLeft = Math.ceil((deadline.getTime() - today.getTime()) / (one_day))
+
+    // Set How many days left in the textContent
+    countdown.textContent = daysLeft
+
+    // ------------------ Text Contents to be filled when page loads ------------------- //
+    currentDate.textContent = ` ${today.getFullYear()}`
+    lastMod.textContent = ` ${today.getMonth() + 1} / ${today.getDate() - 1} / ${today.getFullYear()}`
+
+    //-- THIS IS NOT WORKING IN MOST MODERN BROWSERS NOWADAYS BUT YOU CAN OPEN THE CONSOLE BY PRESSING F12 FOR INSPECT ELEMENTS --//
+    window.status = `Nick's fitness will make your dreams fitness come true.`
+    
+</script>
+
+</html>

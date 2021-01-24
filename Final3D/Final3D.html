@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huysken College</title>
+</head>
+<style>
+    /* ------------------- Scrollbar Solutions------------------- */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #6daff0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #0000cc ;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3171b1;
+    }
+
+    .container {
+        overflow-x: hidden;
+    }
+
+    .content {
+        padding: 0 5rem;
+    }
+    .bannerContainer {
+        padding: 0 6rem;
+
+    }
+    .banner {
+        width: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        font-size:1rem;
+        color:  black;
+        padding: 1rem 0;
+        border-top: 5px solid  #0000cc;
+        border-bottom: 5px solid  #0000cc;
+    }
+    h2 {
+        color:  #0000cc;
+    }
+    footer h2 {
+        font-size:12px;
+    }
+</style>
+
+<body>
+
+    <main class="container">
+        <section class="content">
+            <div class="bannerContainer">
+                <img src="banner.JPG" alt="Banner" class="banner">
+                <h1 id="dynamic"></h1>
+            </div>
+           
+            <h2>
+                To learn more about our recycling programs select from the list: <select>
+                    <option value="" dsiabled selected> Select: </option>
+                    <option value="1"> Paper </option>
+                    <option value="2"> Glass </option>
+                    <option value="3"> Metal </option>
+                </select> 
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae maiores, tenetur ratione
+                assumenda, minus natus excepturi quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mollitia iusto rem? Hic,
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae maiores, tenetur ratione
+                assumenda, minus natus excepturi quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mollitia iusto
+                quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mollitia iusto
+                quo nam! Soluta ipsa tenetur illo veritatis modi! Totam, fugiat qua
+                quo nam! Soluta ipsa tenetur illo veritatis modi! Totam, fugiat quae! Eius quis culpa enim.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae maiores, tenetur ratione
+                assumenda, minus natus excepturi quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mollitia iusto rem? Hic,
+                assumenda, minus natus excepturi quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mo
+                quasi, dicta iste autem sed. Voluptates omnis,
+                menda, minus natus excepturi quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mo
+                quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mollitia iusto
+                quo nam! Soluta ipsa tenetur illo veritatis modi! Totam, fugiat qua
+                quo nam! Soluta ipsa tenetur illo veritatis modi! Totam, fugiat quae! Eius quis culpa enim.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae maiores, tenetur ratione
+                assumenda, minus natus excepturi quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mollitia iusto rem? Hic,
+                assumenda, minus natus excepturi quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mo
+                quasi, dicta iste autem sed. Voluptates omnis,
+                ipsam saepe sed animi, recusandae praesentium, voluptate sint mollitia iusto
+                quo nam! Soluta ipsa tenetur illo veritatis modi! Totam, fugiat qua
+                quo nam! Soluta ipsa tenetur illo veritatis modi! Totam, fugiat quae! Eius quis culpa enim.
+            </p>
+
+            <p>
+                Mountain Valley Recycler  <br />
+                14400, South Main St. <br />
+                Hwy, 19 South <br />
+                Jefferson Point, Virginia
+            </p>
+
+            <footer class="copyright">
+                <h2>Taft Middle School, &copy; <span>2009</span> - <span id="currentDate"></span> <br/>
+                    This document was last modified <span id="lastMod"></span>
+                </h2>
+            </footer>
+        </section>
+
+  
+    </main>
+
+</body>
+<script>
+    const table        =     document.getElementById('table')
+    const table_head   =     document.getElementById('table-head')
+    const menu         =     document.getElementById('menu')
+    const currentDate  =     document.getElementById('currentDate')
+    const lastMod      =     document.getElementById('lastMod')
+    const dynamic      =     document.getElementById('dynamic')
+
+    const Days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    const Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const day = Days[new Date().getDay()]
+    const month = Months[new Date().getMonth()]
+
+        // GET DATE
+        const today = new Date();
+
+        // SET DATE, 0  == January, 1 == February
+        // so in this it's February 14
+        let deadline = new Date(today.getFullYear(), 1, 16);
+
+        // Countdown condition
+        if (today.getMonth() == 1 && today.getDate() > 16) {
+            deadline.setFullYear(deadline.getFullYear() + 1);
+        }
+
+        const one_day = 1000 * 60 * 60 * 24;
+        const daysLeft = Math.ceil((deadline.getTime() - today.getTime()) / (one_day))
+
+        // Set How many days left in the textContent
+        dynamic.textContent = `
+            Today is ${day}, ${month} ${new Date().getDay()}, ${new Date().getFullYear()}. MVR will be at the Falcon Country Fair Grounds in ${daysLeft} days
+            to collect various households hazardous materials, such as gasoline, used oil, and toxic cleaners.`;
+
+
+    // ------------------ Text Contents to be filled when page loads ------------------- //
+    currentDate.textContent = ` ${today.getFullYear()}`
+    lastMod.textContent = ` ${today.getMonth() + 1} / ${today.getDate() - 1} / ${today.getFullYear()}`
+
+
+
+  
+</script>
+
+</html>
